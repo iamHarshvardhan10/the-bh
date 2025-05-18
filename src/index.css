@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 @import "tailwindcss";
 
 * {
@@ -8,4 +10,34 @@
 
 body {
   background-color: #000000;
+  font-family: "Inter", sans-serif;
 }
+
+.btn {
+  padding: 12px 48px;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+#customcursor {
+  position: fixed;
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+/* Scroller */
+/* #scroller {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+} */
