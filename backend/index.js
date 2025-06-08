@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { mongoconnection } from './config/databaseconnection.js';
+// import { mailSender } from './utils/MailSender.js';
 
 dotenv.config();
 const PORT = process.env.PORT;
@@ -16,6 +17,9 @@ app.use(cookieParser())
 app.use(cors({
 
 }))
+
+// mailSender('harshvardhanpb415@gmail.com', 'Mail Send Testing', '<h1>Its test mode</h1>')
+
 
 app.get('/', (req, res) => {
     res.json({
