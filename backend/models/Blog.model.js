@@ -45,7 +45,7 @@ const Blog = mongoose.model('Blog', blogSchema);
 
 
 blogSchema.pre('save', function (next) {
-    if (!this.slug && this.tile) {
+    if (!this.slug && this.title) {
         this.slug = slugify(this.title, {
             lower: true,
             strict: true

@@ -6,6 +6,9 @@ import cookieParser from 'cookie-parser';
 import { mongoconnection } from './config/databaseconnection.js';
 // import { mailSender } from './utils/MailSender.js';
 
+// ROUTES PATHS
+import authRoutes from './routes/auth.router.js'
+
 dotenv.config();
 const PORT = process.env.PORT;
 
@@ -19,7 +22,9 @@ app.use(cors({
 }))
 
 // mailSender('harshvardhanpb415@gmail.com', 'Mail Send Testing', '<h1>Its test mode</h1>')
+// ROUTES
 
+app.use('/api/v1/auth', authRoutes)
 
 app.get('/', (req, res) => {
     res.json({
