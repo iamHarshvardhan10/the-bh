@@ -1,5 +1,5 @@
 import express from 'express';
-import { register,  sendOtp } from '../controllers/auth.controllers.js';
+import { login, register, sendOtp } from '../controllers/auth.controllers.js';
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.post('/send-otp', sendOtp)
 router.post('/register', register);
 
 // LOGIN USER
-// router.post('/login', login);
+router.post('/login', login);
 
 
 

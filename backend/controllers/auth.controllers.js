@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 import User from "../models/User.model.js";
 import otpgenerator from 'otp-generator'
 import OTP from "../models/OTP.model.js";
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken'
 
 // SENDING OTP
 export const sendOtp = async (req, res) => {
@@ -121,6 +123,64 @@ export const register = async (req, res) => {
             success: false,
             message1: "this is message",
             message: error.message
+        })
+    }
+}
+
+
+
+// LOGIN 
+
+export const login = async (req, res) => {
+    try {
+        // DESTRCUTURE FROM REQUEST BODY
+        const { email, password } = req.body;
+
+        // VALIDATE USER
+        if (!email || !password) {
+            return res.status(404).json({
+                message: "All Feilds are required",
+                success: false
+            })
+        }
+
+        // FIND USER WITH PROVIDED EMAIL
+        const user = await User.findOne({ email })
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User Does not exist! Please Register'
+            })
+        }
+
+        // ENCRYPT THE PASSWORD
+        const encryptPassword = await bcrypt.compare(password, user.password);
+        if (!encryptPassword) {
+            return res.status(404).json({
+                success: false,
+                message: "Password is invalid"
+            })
+        }
+
+        // JWT TOKEN GENERATE
+        const token = jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET, { expiresIn: "24h" })
+
+        const options = {
+            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+            httpOnly: true,
+        };
+        res.cookie("token", token, options).status(200).json({
+            success: true,
+            token,
+            user,
+            message: 'User Login Successfully'
+
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            message: `Internal Server Error ${error.message}`,
+            success: false
         })
     }
 }
