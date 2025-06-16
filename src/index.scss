@@ -28,6 +28,10 @@ body {
   .nav-logo {
     h1 {
       font-size: 24px;
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
     }
   }
 
@@ -39,6 +43,103 @@ body {
       text-decoration: none;
       text-align: center;
       color: #fff;
+    }
+  }
+}
+
+// REGISTER AND LOGIN
+.register-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .register-form {
+    form {
+      min-width: 350px;
+      padding: 40px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        // padding: 20px;
+        label {
+          color: #fff;
+          font-size: 18px;
+        }
+        input {
+          height: 35px;
+          padding: 5px;
+          margin: 10px 0;
+          border: none;
+          border-radius: 5px;
+          outline: none;
+
+          &::placeholder {
+            font-size: 12px;
+            text-transform: capitalize;
+          }
+        }
+        p {
+          color: #fff;
+          margin: 5px 0;
+        }
+      }
+
+      button {
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: #e77f14;
+        color: #fff;
+      }
+    }
+  }
+}
+
+// HOME CONTAINER
+
+.home-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 105px;
+
+    span {
+      color: #e77f14;
+    }
+  }
+  p {
+    text-align: center;
+    color: white;
+    width: 80%;
+    margin: 30px 0;
+    font-size: 24px;
+  }
+
+  button {
+    padding: 15px 60px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e77f14;
+
+    a {
+      font-size: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
     }
   }
 }
